@@ -83,9 +83,12 @@ public class App {
 				        logger.info(response.getItems().toString());
 				        SearchRequestBuilder sb = client.prepareSearch(ce.getDataBaseName()).setTypes(ce.getTablesName())
 				        			.setSearchType(SearchType.QUERY_THEN_FETCH);
-				        SearchResponse sResponse = sb.setQuery(getQueryBuilder(ce)).execute().actionGet();
+				       // SearchResponse sResponse = sb.setQuery(getQueryBuilder(ce)).execute().actionGet();
 				        //GetResponse response2 =  client.prepareGet().get();
-				        logger.info(sResponse.toString());
+				        
+				        SearchResponse response2 = sb.setSearchType(SearchType.QUERY_THEN_FETCH)
+				        						.setQuery(QueryBuilders.termQuery("eventId", "2")).execute().actionGet();
+				        logger.info(response2.getHits().toString());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
