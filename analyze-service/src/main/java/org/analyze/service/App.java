@@ -1,6 +1,9 @@
 package org.analyze.service;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.codehaus.jackson.JsonGenerationException;
@@ -20,7 +23,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.code.or.OpenReplicator;
 import com.google.code.or.common.util.MySQLConstants;
+import com.jd.fishbaby.analyze.core.impl.EsServiceInterfaceImpl;
+import com.jd.fishbaby.domain.BaseObject;
 import com.jd.fishbaby.domain.BinlogMasterStatus;
+import com.jd.fishbaby.enums.EventTypeEnum;
 import com.jd.fishbaby.event.CDCEvent;
 import com.jd.fishbaby.linstener.InstanceListener;
 import com.jd.fishbaby.utils.CDCEventManager;
@@ -63,32 +69,31 @@ public class App {
         @SuppressWarnings("unused")
 		@Override
         public void run() {
-        	Client client = new EsClientBuilder().init();
-        	BulkRequestBuilder builder = client.prepareBulk();
-        	ObjectMapper mapper = new ObjectMapper();
-        	byte[] jsonObj;
-        	
+        	Map<String, Integer> ipAddress =  new HashMap<String, Integer>();
+        	ipAddress.put("localhost", 9300);
+        	EsClientBuilder esClientBuilder = new EsClientBuilder();
+        	esClientBuilder.setClusterName("elasticsearch");
+        	esClientBuilder.setIpAddress(ipAddress);
+        	Client client = esClientBuilder.init();
+        	EsServiceInterfaceImpl esService = new EsServiceInterfaceImpl();
+        	esService.setClient(client);
             while(true){
                 if(CDCEventManager.queue.isEmpty() == false) {
                     CDCEvent ce = CDCEventManager.queue.pollFirst();
-                    //Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
-                    //String prettyStr1 = gson.toJson(ce);
-                    //System.out.println(ce.toString());
-                    logger.info(ce.toString());
+                    if(ce.getDataBaseName().equals("mysql")) {
+                    	continue;
+                    }
                     try {
-						jsonObj = mapper.writeValueAsBytes(ce);
-						builder.add(client.prepareIndex(ce.getDataBaseName(), ce.getTablesName()).
-									setSource(jsonObj).setId(ce.getEventId() + ""));
-						BulkResponse response = builder.get();
-				        logger.info(response.getItems().toString());
-				        SearchRequestBuilder sb = client.prepareSearch(ce.getDataBaseName()).setTypes(ce.getTablesName())
-				        			.setSearchType(SearchType.QUERY_THEN_FETCH);
-				       // SearchResponse sResponse = sb.setQuery(getQueryBuilder(ce)).execute().actionGet();
-				        //GetResponse response2 =  client.prepareGet().get();
-				        
-				        SearchResponse response2 = sb.setSearchType(SearchType.QUERY_THEN_FETCH)
-				        						.setQuery(QueryBuilders.termQuery("eventId", "2")).execute().actionGet();
-				        logger.info(response2.getHits().toString());
+						BaseObject baseObject = new BaseObject();
+						baseObject.setAfter(ce.getAfter());
+						baseObject.setBefore(ce.getBefore());
+						baseObject.setDatabaseName(ce.getDataBaseName());
+						baseObject.setEventOccurTime(new Date(ce.getTimeStamp()));
+						baseObject.setEventType(EventTypeEnum.of(ce.getEventType()));
+						baseObject.setTableName(ce.getTablesName());
+						if(!esService.add(baseObject)) {
+							CDCEventManager.queue.add(ce);
+						}
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -103,10 +108,10 @@ public class App {
             }
         }
 
-		private QueryBuilder getQueryBuilder(CDCEvent ce) {
+		/*private QueryBuilder getQueryBuilder(CDCEvent ce) {
 			return QueryBuilders
 					.queryStringQuery(ce.getDataBaseName())
 					.field("df_news");
-		}       
+		}   */    
     }
 }

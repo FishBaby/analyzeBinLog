@@ -6,9 +6,9 @@ package com.jd.fishbaby.utils;
 * $
 */
 
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Map;
 
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
@@ -20,41 +20,42 @@ import org.slf4j.LoggerFactory;
 
 public class EsClientBuilder {
 	public static final Logger LOGGER = LoggerFactory.getLogger(EsClientBuilder.class);
-	
+
 	private String clusterName;
-	private String nodeIpInfo;
+	private Map<String, Integer> ipAddress;
 	private TransportClient client;
-	
+
 	public Client init() {
-		Settings settings = Settings.builder()
-				.put("cluster.name", "elasticsearch")
-				.put("client.transport.sniff", true)
-				.build();
-		try {
-			client = new PreBuiltTransportClient(settings).
-					addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
-		} catch (UnknownHostException e) {
-			LOGGER.error("elasticSearch ip error!" , e);
+		Settings settings = Settings.builder().put("cluster.name", clusterName).put("client.transport.sniff", false).build();
+		client = new PreBuiltTransportClient(settings);
+		for (String ip : ipAddress.keySet()) {
+			try {
+				client.addTransportAddress(
+						new InetSocketTransportAddress(InetAddress.getByName(ip), ipAddress.get(ip)));
+			} catch (UnknownHostException e) {
+				LOGGER.error("elasticSearch ip error!", e);
+			}
 		}
 		return client;
 	}
-	
+
 	public String getClusterName() {
 		return clusterName;
 	}
+
 	public void setClusterName(String clusterName) {
 		this.clusterName = clusterName;
 	}
-	public String getNodeIpInfo() {
-		return nodeIpInfo;
-	}
-	public void setNodeIpInfo(String nodeIpInfo) {
-		this.nodeIpInfo = nodeIpInfo;
-	}
+
 	public TransportClient getClient() {
 		return client;
 	}
-	public void setClient(TransportClient client) {
-		this.client = client;
+
+	public Map<String, Integer> getIpAddress() {
+		return ipAddress;
+	}
+
+	public void setIpAddress(Map<String, Integer> ipAddress) {
+		this.ipAddress = ipAddress;
 	}
 }
