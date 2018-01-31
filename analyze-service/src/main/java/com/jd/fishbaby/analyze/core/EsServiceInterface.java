@@ -11,11 +11,6 @@ import com.jd.fishbaby.domain.BaseObject;
 * $
 */
 public interface EsServiceInterface {
-	static final String BEFORE = "Before_";
-	static final String AFTER = "After_";
-	static final String PREFIX_FIELD_DECLARE = "public String ";
-	static final String SUFFIX_FIELD_DECLARE = " ;";
-	
 	Boolean add(BaseObject baseObject);
 	
 	List query(BaseObject baseObject);

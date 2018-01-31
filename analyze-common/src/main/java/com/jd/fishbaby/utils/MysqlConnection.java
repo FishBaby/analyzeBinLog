@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.jd.fishbaby.constant.MysqlConstant;
 import com.jd.fishbaby.domain.BinlogInfo;
 import com.jd.fishbaby.domain.BinlogMasterStatus;
 import com.jd.fishbaby.domain.ColumnInfo;
@@ -52,6 +54,25 @@ public class MysqlConnection {
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage(), e);
 		}
+	}
+	
+	public static Connection getConnection(String url , String userArg , String passwordArg) {
+		Connection rst = null;
+		try {
+			if (rst == null || rst.isClosed()) {
+				Class.forName("com.mysql.jdbc.Driver");
+				user = userArg;
+				password = passwordArg;
+
+				rst = DriverManager.getConnection(url, user, password);
+				LOGGER.info("connected to mysql:{} : {}", user, password);
+			}
+		} catch (ClassNotFoundException e) {
+			LOGGER.error(e.getMessage(), e);
+		} catch (SQLException e) {
+			LOGGER.error(e.getMessage(), e);
+		}
+		return rst;
 	}
 
 	public static Connection getConnection() {
@@ -94,7 +115,43 @@ public class MysqlConnection {
 		}
 		return cols;
 	}
-
+	
+	public static List<String> getColumnTypes(String host, Integer port, String databaseName, String user,
+			String password, String tableName) {
+		List<String> rst = new ArrayList<String>();
+		java.sql.PreparedStatement pStemt = null;
+		String url = String.format(MysqlConstant.CONN_URL, host, port, databaseName);
+		Connection conn = getConnection(url, user, password);
+		String tableSql = "SELECT * FROM " + tableName;
+		try {
+			pStemt = conn.prepareStatement(tableSql);
+			ResultSetMetaData rsmt = pStemt.getMetaData();
+			for (int i = 0; i < rsmt.getColumnCount(); i++) {
+				rst.add(rsmt.getColumnTypeName(i + 1));
+			}
+		} catch (Exception e) {
+			LOGGER.error("getColumnTypes failure", e);
+		} finally {
+			if (pStemt != null) {
+				try {
+					pStemt.close();
+					closeConnection(conn);
+				} catch (SQLException e) {
+					LOGGER.error("getColumnTypes close pstem and connection failure", e);
+				}
+			}
+		}
+		return rst;
+	}
+    public static void closeConnection(Connection conn) {
+        if(conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                LOGGER.error("close connection failure", e);
+            }
+        }
+    }
 	public static List<BinlogInfo> getBinlogInfo() {
 		List<BinlogInfo> binlogList = new ArrayList<BinlogInfo>();
 		Connection conn = null;

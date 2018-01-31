@@ -16,8 +16,7 @@ public class BaseObject {
 	private String tableName = null;
 	private EventTypeEnum eventType;
 	private Date eventOccurTime = null;
-	private Map<String, String> before = null;
-	private Map<String, String> after = null;
+	private Map<String, String> fieldAndValue = null;
 
 	public String getDatabaseName() {
 		return databaseName;
@@ -51,20 +50,11 @@ public class BaseObject {
 		this.eventOccurTime = eventOccurTime;
 	}
 
-	public Map<String, String> getBefore() {
-		return before;
+	public Map<String, String> getFieldAndValue() {
+		return fieldAndValue;
 	}
 
-	public void setBefore(Map<String, String> before) {
-		this.before = before;
+	public void setFieldAndValue(Map<String, String> fieldAndValue) {
+		this.fieldAndValue = fieldAndValue;
 	}
-
-	public Map<String, String> getAfter() {
-		return after;
-	}
-
-	public void setAfter(Map<String, String> after) {
-		this.after = after;
-	}
-
 }

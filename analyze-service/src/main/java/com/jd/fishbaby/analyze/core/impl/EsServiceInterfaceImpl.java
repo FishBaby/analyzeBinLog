@@ -17,7 +17,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jd.fishbaby.analyze.core.EsServiceInterface;
+import com.jd.fishbaby.constant.EsConstant;
 import com.jd.fishbaby.domain.BaseObject;
+import com.jd.fishbaby.enums.EventTypeEnum;
 import com.jd.fishbaby.utils.DynamicCreateObject;
 
 /**
@@ -75,7 +77,7 @@ public class EsServiceInterfaceImpl implements EsServiceInterface {
 		Map<String, Object> rst = new HashMap<String, Object>();
 		for (Entry<String, Object> entry : fieldAndValue.entrySet()) {
 			String fieldName = entry.getKey();
-			String declareField = PREFIX_FIELD_DECLARE + fieldName + SUFFIX_FIELD_DECLARE;
+			String declareField = EsConstant.PREFIX_FIELD_DECLARE + fieldName + EsConstant.SUFFIX_FIELD_DECLARE;
 			rst.put(declareField, entry.getValue());
 		}
 		return rst;
@@ -92,24 +94,19 @@ public class EsServiceInterfaceImpl implements EsServiceInterface {
 				rst.put(field.getName(), e.name());
 				continue;
 			}
-			if (field.getGenericType().toString().equals("class java.util.Date")) {
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			if (field.getGenericType().toString().equals(EsConstant.DATE_TYPE_NAME)) {
+				SimpleDateFormat sdf = new SimpleDateFormat(EsConstant.DATE_FORMAT_STRING);
 				String sdfDate = sdf.format((Date) field.get(baseObject));
 				rst.put(field.getName(), sdfDate);
 				continue;
 			}
-			if (!(field.getGenericType().toString().equals("java.util.Map<java.lang.String, java.lang.String>"))) {
+			if (!(field.getGenericType().toString().equals(EsConstant.MAP_TYPE_NAME))) {
 				rst.put(field.getName(), field.get(baseObject));
 			}
 		}
-		if(baseObject.getBefore()!= null && baseObject.getBefore().size() > 0) {
-			for (Entry<String, String> entry : baseObject.getBefore().entrySet()) {
-				rst.put(BEFORE + entry.getKey(), entry.getValue());
-			}
-		}
-		if(baseObject.getAfter() != null && baseObject.getAfter().size() > 0) {
-			for (Entry<String, String> entry : baseObject.getAfter().entrySet()) {
-				rst.put(AFTER + entry.getKey(), entry.getValue());
+		if(baseObject.getFieldAndValue()!= null && baseObject.getFieldAndValue().size() > 0) {
+			for (Entry<String, String> entry : baseObject.getFieldAndValue().entrySet()) {
+				rst.put(entry.getKey(), entry.getValue());
 			}
 		}
 		return rst;

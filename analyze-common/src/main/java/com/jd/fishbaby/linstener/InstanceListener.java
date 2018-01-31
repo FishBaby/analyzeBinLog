@@ -44,6 +44,7 @@ public class InstanceListener implements BinlogEventListener {
 			return;
 		}
 		int eventType = be.getHeader().getEventType();
+		//TODO : 允许自定义过滤某些库，某些表
 		switch (eventType) {
 		case MySQLConstants.FORMAT_DESCRIPTION_EVENT: {
 			logger.trace("FORMAT_DESCRIPTION_EVENT");

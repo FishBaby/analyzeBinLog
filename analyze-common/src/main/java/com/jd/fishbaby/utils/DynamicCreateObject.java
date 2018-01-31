@@ -36,7 +36,7 @@ public class DynamicCreateObject {
 			throw new CommonException("NewClassNameNull","New class name can't be null.");
 		}
 		if(fieldAndValue == null || fieldAndValue.size() <= 0) {
-			throw new CommonException("FieldAndValueEmpty", "Field and Value map can't be empty.");
+			throw new CommonException("FieldAndValueEmpty", "Field and value map can't be empty.");
 		}
 		try {
 			//add field and method

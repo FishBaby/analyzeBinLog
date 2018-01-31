@@ -1,28 +1,15 @@
 package org.analyze.service;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.elasticsearch.action.bulk.BulkRequestBuilder;
-import org.elasticsearch.action.bulk.BulkResponse;
-import org.elasticsearch.action.get.GetResponse;
-import org.elasticsearch.action.search.SearchRequestBuilder;
-import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.code.or.OpenReplicator;
-import com.google.code.or.common.util.MySQLConstants;
 import com.jd.fishbaby.analyze.core.impl.EsServiceInterfaceImpl;
 import com.jd.fishbaby.domain.BaseObject;
 import com.jd.fishbaby.domain.BinlogMasterStatus;
@@ -59,7 +46,6 @@ public class App {
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
-
 		Thread thread = new Thread(new PrintCDCEvent());
 		thread.start();
 	}
@@ -85,8 +71,11 @@ public class App {
                     }
                     try {
 						BaseObject baseObject = new BaseObject();
-						baseObject.setAfter(ce.getAfter());
-						baseObject.setBefore(ce.getBefore());
+						 if(ce.getEventType() == EventTypeEnum.EVENT_INSERT.value()) {
+							baseObject.setFieldAndValue(ce.getBefore());
+						} else {
+							baseObject.setFieldAndValue(ce.getAfter());
+						}
 						baseObject.setDatabaseName(ce.getDataBaseName());
 						baseObject.setEventOccurTime(new Date(ce.getTimeStamp()));
 						baseObject.setEventType(EventTypeEnum.of(ce.getEventType()));

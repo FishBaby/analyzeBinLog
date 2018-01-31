@@ -35,8 +35,7 @@ public class JavassistTest3 {
 		Map<String, String> beforeMap = new HashMap<String, String>();
 		afterMap.put("id", "2");
 		beforeMap.put("id", "2");
-		baseObject.setAfter(afterMap);
-		baseObject.setBefore(beforeMap);
+		baseObject.setFieldAndValue(beforeMap);
 		String newClassName = baseObject.getDatabaseName() + "_" + baseObject.getTableName();
 		Map<String, Object> fieldAndValue = null;
 		ArrayList<String> methodDeclare = new ArrayList<String>();
@@ -83,11 +82,8 @@ public class JavassistTest3 {
 				rst.put(field.getName(), field.get(baseObject));
 			}
 		}
-		for (Entry<String, String> entry : baseObject.getBefore().entrySet()) {
+		for (Entry<String, String> entry : baseObject.getFieldAndValue().entrySet()) {
 			rst.put(BEFORE + entry.getKey(), entry.getValue());
-		}
-		for (Entry<String, String> entry : baseObject.getAfter().entrySet()) {
-			rst.put(AFTER + entry.getKey(), entry.getValue());
 		}
 		return rst;
 	}
