@@ -4,10 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
        					   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="client" factory-bean="esClientBuilder" factory-method="init" destroy-method="close"/>
+    <!-- <bean id="client" factory-bean="esClientBuilder" factory-method="init" destroy-method="close"/>
 
     <bean id="esClientBuilder" class="com.jd.fishbaby.utils.EsClientBuilder">
         <property name="clusterName" value="elasticsearch" />
         <property name="nodeIpInfo" value="" />
-    </bean>
+    </bean> -->
 </beans>

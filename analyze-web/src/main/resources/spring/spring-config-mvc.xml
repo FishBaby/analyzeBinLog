@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+
+
+	<!-- template view -->
+	<bean id="velocityConfig"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="/WEB-INF/vm/" />
+		<property name="velocityProperties">
+			<props>
+				<prop key="input.encoding">UTF-8</prop>
+				<prop key="output.encoding">UTF-8</prop>
+				<prop key="contentType">text/html;charset=UTF-8</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="velocityViewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+		<property name="layoutUrl" value="layout/default.vm" />
+		<property name="cache" value="false" />
+		<property name="suffix" value=".vm" />
+		<property name="requestContextAttribute" value="rc" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="dateToolAttribute" value="dateTool" />
+		<property name="numberToolAttribute" value="numberTool" />
+		<!-- Merge urlBuilderMap to view context for convenience. You can put your 
+			tools which must be thread safe. -->
+		<property name="attributesMap" ref="_velocityTools" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+	</bean>
+
+	<!-- file upload related -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="maxUploadSize" value="5000000" />
+	</bean>
+
+
+	<!-- 根据客户端的不同的请求决定不同的view进行响应, 如 /blog/1.json /blog/1.xml -->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<!-- 设置为true以忽略对Accept Header的支持 -->
+		<property name="ignoreAcceptHeader" value="true" />
+		<!-- 在没有扩展名时即: "/user/1" 时的默认展现形式 -->
+		<property name="defaultContentType" value="text/html" />
+		<!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<ref bean="velocityViewResolver" />
+			</list>
+		</property>
+	</bean>
+
+	<mvc:default-servlet-handler />
+
+	<bean id="sqlTypes" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="bigint" value="Long" />
+				<entry key="tinyint" value="Integer" />
+				<entry key="smallint" value="Integer" />
+				<entry key="int" value="Integer" />
+				<entry key="varchar" value="String" />
+				<entry key="tinytext" value="String" />
+				<entry key="text" value="String" />
+				<entry key="longtext" value="String" />
+				<entry key="datetime" value="Date" />
+				<entry key="date" value="Date" />
+				<entry key="decimal" value="BigDecimal" />
+				<entry key="double" value="Double" />
+				<entry key="float" value="Float" />
+				<entry key="char" value="char" />
+				<entry key="timestamp" value="Date"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+</beans>

@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="
-       http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context-3.0.xsd
-       http://www.springframework.org/schema/aop
-       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd" default-autowire="byName">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+	    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+	    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+	    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"
+	default-autowire="byName">
 
-    <import resource="spring/spring-elasticsearch.xml"/>
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<!-- <value>classpath:important.properties</value> -->
+			</list>
+		</property>
+	</bean>
 
-    <context:annotation-config/>
-    <context:component-scan base-package="com.jd.fishbaby"/>
-	<aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/>
-
+	<import resource="spring/spring-config-elasticsearch.xml" />	
+	<!-- 启动aspectj切面编程(规定：便于管理所有实现aspectj的切面类都配置在文件spring-config-monitor.xml，不能用@Component标注) -->
+	<aop:aspectj-autoproxy />
+	<!-- Annotation -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.jd" />
+	
 </beans>
