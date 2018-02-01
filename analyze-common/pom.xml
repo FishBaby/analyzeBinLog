@@ -8,9 +8,7 @@
 		<artifactId>analyzeBinLog</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.jd.fishbaby.analyzeBinLog</groupId>
 	<artifactId>analyze-common</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>analyze-common</name>
 	<url>http://maven.apache.org</url>
 	<properties>

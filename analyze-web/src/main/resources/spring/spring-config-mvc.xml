@@ -32,7 +32,7 @@
 		<property name="numberToolAttribute" value="numberTool" />
 		<!-- Merge urlBuilderMap to view context for convenience. You can put your 
 			tools which must be thread safe. -->
-		<property name="attributesMap" ref="_velocityTools" />
+		<!-- <property name="attributesMap" ref="_velocityTools" /> -->
 		<property name="contentType" value="text/html;charset=UTF-8" />
 	</bean>
 

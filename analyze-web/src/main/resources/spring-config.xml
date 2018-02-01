@@ -18,11 +18,12 @@
 		</property>
 	</bean>
 
-	<import resource="spring/spring-config-elasticsearch.xml" />	
+	<import resource="spring/spring-config-elasticsearch.xml" />
+	<import resource="spring/spring-config-mvc.xml"/>
 	<!-- 启动aspectj切面编程(规定：便于管理所有实现aspectj的切面类都配置在文件spring-config-monitor.xml，不能用@Component标注) -->
 	<aop:aspectj-autoproxy />
 	<!-- Annotation -->
 	<context:annotation-config />
-	<context:component-scan base-package="com.jd" />
+	<context:component-scan base-package="com.jd.fishbaby" />
 	
 </beans>

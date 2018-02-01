@@ -20,7 +20,7 @@ public class AppTest {
 		//
 		final OpenReplicator or = new OpenReplicator();
 		or.setUser("root");
-		or.setPassword("root");
+		or.setPassword("");
 		or.setHost("65.49.218.201");
 		or.setPort(3306);
 		or.setServerId(6789);
