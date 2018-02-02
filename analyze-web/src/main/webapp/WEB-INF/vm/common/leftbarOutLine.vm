@@ -1,0 +1,73 @@
+<a class="menu-toggler" id="menu-toggler" href="#">
+			<span class="menu-text"></span>
+		</a>
+		<div class="sidebar" id="sidebar">
+			<script type="text/javascript">
+				try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+			</script>
+			<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+				<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+					<button class="btn btn-success">
+						<i class="icon-signal"></i>
+					</button>
+					<button class="btn btn-info">
+						<i class="icon-pencil"></i>
+					</button>
+					<button class="btn btn-warning">
+						<i class="icon-group"></i>
+					</button>
+					<button class="btn btn-danger">
+						<i class="icon-cogs"></i>
+					</button>
+				</div>
+				<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+					<span class="btn btn-success"></span>
+					<span class="btn btn-info"></span>
+					<span class="btn btn-warning"></span>
+					<span class="btn btn-danger"></span>
+				</div>
+			</div><!-- #sidebar-shortcuts -->
+			<ul class="nav nav-list" id="_urls">
+				<li class="">
+					<a href="#" class="dropdown-toggle">
+						<i class="icon-list"></i>
+						<span class="menu-text">代码生成</span>
+						<b class="arrow icon-angle-down"></b>
+					</a>
+					<ul class="submenu">
+						<li><a href="/rest/st/welcome"><i class="icon-double-angle-right"></i>代码小丽单表</a></li>
+						<li><a href="/rest/mt/welcome"><i class="icon-double-angle-right"></i>代码小丽多表</a></li>
+						<li><a href="/rest/worker/workerPage"><i class="icon-double-angle-right"></i>功能DEMO</a></li>
+					</ul>
+				</li>
+				<li class="">
+					<a href="#" class="dropdown-toggle">
+						<i class="icon-desktop"></i>
+						<span class="menu-text">样例</span>
+						<b class="arrow icon-angle-down"></b>
+					</a>
+					<ul class="submenu">
+						<li><a href="/resources/ace/index.html" target="_blank"><i class="icon-double-angle-right"></i>ACE样例</a></li>
+						<li><a href="/druid/index.html" target="_blank"><i class="icon-double-angle-right"></i>Druid数据源监控信息</a></li>
+					</ul>
+				</li>
+			</ul><!-- /.nav-list -->
+			<div class="sidebar-collapse" id="sidebar-collapse">
+				<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+			</div>
+			<script type="text/javascript">
+				try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+				jQuery(function(){
+					var href = window.location.href;
+					href = href.slice(href.indexOf("rest")).replace(/[\?#].*$/,"");
+					if(href == "rest/outLine"){
+						href = "rest/fms/welcome";
+					}
+					jQuery("#_urls").find("a").each(function(){
+						if(jQuery(this).attr("href").indexOf(href) != -1){
+							jQuery(this).parent().addClass("active").parentsUntil("#_urls").addClass("active open");
+						}
+					});
+				});
+			</script>
+		</div>

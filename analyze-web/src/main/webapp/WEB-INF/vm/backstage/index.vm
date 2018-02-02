@@ -3,8 +3,8 @@
 <body>
 	<canvas id="myChart" width="400" height="400"></canvas>
 </body>
-<script type="text/javascript" src="/resource/js/Chart.js"></script>
-<script type="text/javascript" src="/resource/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="/resources/js/Chart.js"></script>
+<script type="text/javascript" src="/resources/js/jquery-2.0.3.min.js"></script>
 <script>
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {

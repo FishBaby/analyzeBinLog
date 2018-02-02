@@ -1,0 +1,93 @@
+.margin-10{
+	margin-top: 10px;
+}
+.pointer{
+	cursor: pointer;
+}
+#sidebar{
+	position:absolute;
+}
+.dropzone .dz-preview .dz-error-message {
+    top: 150px;
+}
+.ui-jqgrid .ui-jqgrid-htable th div {
+    text-align: center;
+}
+.ui-jqgrid tr.ui-row-ltr td, .ui-jqgrid tr.ui-row-rtl td {
+    text-align: center;
+}
+.dropzone {
+    border: 2px dashed #0087F7;
+}
+#workerTable .edit{
+	height:35px;
+}
+.breadcrumbs{
+	padding-top:10px;
+}
+.leftBox{
+	position:absolute;
+	width:420px;
+}
+.rightBox{
+	margin-left:430px;width:auto;float:none";
+}
+.jd_hide{
+	display:none;
+}
+.clickText{
+	text-decoration: underline;
+	cursor:pointer;
+}
+.jstree-default .jstree-leaf > ins {
+}
+.jstree-default a ins.jd-tree-asy-event{ 
+	background:url("images/asy_event_small.png") center center no-repeat;
+}
+.jstree-default a ins.jd-tree-asy-worker{ 
+	background:url("images/icon-worker.png") no-repeat scroll 0px 50%;
+}
+.jstree-default a ins.jd-tree-asy-worker-closed{ 
+	background:url("images/icon-worker.png") no-repeat scroll -20px 50%;
+}
+.jstree-default a ins.jd-tree-syn-event{ 
+	background:url("images/syn_event_small.png") no-repeat scroll 0px 0px;
+}
+.jstree-default a ins.jd-tree-cycle-event{ 
+	background:url("images/icon-cycle.png") no-repeat scroll 0px 50%;
+}
+.jstree-default a ins.jd-tree-cycle-event-closed{
+	background:url("images/icon-cycle.png") no-repeat scroll -20px 50%;
+}
+.jstree-default a ins.folder-tar{ 
+	background:url("images/folder-tar-20-20.png") center center no-repeat;
+}
+.jstree-default a ins.file{ 
+	background:url("images/file.png") center center no-repeat;
+}
+.jstree-default a ins.file-running{ 
+	background:url("images/file-running.png") center center no-repeat;
+}
+.jstree-default a ins.file-end{ 
+	background:url("images/file-end.png") center center no-repeat;
+}
+.cust-color .even {
+    background:#eee;
+}  
+/* 偶数行样式*/
+.cust-color .odd {
+  background:#ddd;
+}  
+/* 奇数行样式*/
+.cust-color .activit {
+  background:#aaa;
+  color:#fff;
+}
+.redText{
+	color:red;
+	background-color:#FCF2AD;
+}
+.greenText{
+	color:green;
+	background-color:#FCF2AD;
+}

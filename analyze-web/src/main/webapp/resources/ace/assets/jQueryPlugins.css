@@ -1,0 +1,159 @@
+/* jquery plugin selectFilter start */
+.selectListContent{
+	overflow:auto;
+	border: 1px solid #c5d0dc;
+    padding: 5px 5px ;
+    position: relative;
+}
+.selectListTitle input{
+	width:100%;
+}
+.selectListContent ul.selectList{
+	list-style: outside none none;
+	text-align:left;
+    margin: 0;
+    padding: 0;
+}
+.selectListContent ul.selectList li.activit{
+	background-color:#0756A0;
+	color:#FFFFFF;
+	cursor:pointer;
+}
+/* jquery plugin selectFilter end */
+/* jquery plugin showRuningMsg start */
+.loading{
+	background:url("images/loading.gif") no-repeat scroll 90% 50% #FEF1EC;
+	text-align:left;
+	padding-top:5px;
+	padding-left:5px;
+	padding-right:15px;
+	margin:0 auto;
+}
+/* jquery plugin showRuningMsg end */
+/* jquery plugin pagedownload start */
+ul.pagedownload{
+	list-style-type:none;
+	text-align:right;
+	padding: 0;
+	margin: 0;
+}
+ul.pagedownload li.activit{
+	background-color:#0756A0;
+	color:#FFFFFF;
+	cursor:pointer;
+}
+ul.pagedownload li.selected{
+	background-color:#808080;
+	cursor:pointer;
+}
+/* jquery plugin pagedownload end */
+/* jquery plugin dragTableAble start */
+.table-striped tbody tr.draging:nth-child(odd) td {
+  background-color: #ccc;
+}
+tr.draging{
+	background-color:#ccc !important;
+	cursor:move !important;;
+	border: 2px dashed #bed2db;
+}
+/* jquery plugin dragTableAble end */
+/* jquery plugin jqueryForm start */
+.vFormMsg{
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1010;
+	display: block;
+    width:150px;
+    max-width: 276px;
+    padding: 1px;
+    text-align: left;
+    white-space: normal;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    background-clip: padding-box;
+}
+.vFormMsg.right {
+    margin-left: 10px;
+}
+.vFormMsg.right .arrow {
+    top: 50%;
+    left: -11px;
+    margin-top: -11px;
+    border-right-color: #999;
+    border-right-color: rgba(0,0,0,0.25);
+    border-left-width: 0;
+}
+.vFormMsg.bottom {
+    margin-top: 10px;
+}
+.vFormMsg.bottom .arrow {
+    top: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-bottom-color: rgba(0,0,0,0.25);
+    border-top-width: 0;
+}
+.vFormMsg.top {
+    margin-top: -10px;
+}
+.vFormMsg.top .arrow {
+    bottom: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-top-color: #999;
+    border-top-color: rgba(0,0,0,0.25);
+    border-bottom-width: 0;
+}
+.vFormMsg .arrow {
+    border-width: 11px;
+}
+.vFormMsg .arrow, .vFormMsg .arrow:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+.vFormMsg.right .arrow:after {
+    bottom: -10px;
+    left: 1px;
+    border-right-color: #fff;
+    border-left-width: 0;
+    content: " ";
+}
+.vFormMsg.top .arrow:after {
+    bottom: 1px;
+    margin-left: -10px;
+    border-top-color: #fff;
+    border-bottom-width: 0;
+    content: " ";
+}
+.vFormMsg.bottom .arrow:after {
+    top: 1px;
+    margin-left: -10px;
+    border-bottom-color: #eff3f8;
+    border-top-width: 0;
+}
+.vFormMsg .arrow:after {
+    border-width: 10px;
+    content: "";
+}
+.vFormMsg .popover-content {
+    padding: 9px 14px;
+}
+.warning{
+	border:1px solid #FF0000 !important;
+	background-color:#FCF2AD !important;
+	outline:1px solid #FFC1C1 !important;
+}
+.warningText{
+	color:#FF0000;
+	margin-left:5px;
+}
+/* jquery plugin jqueryForm end */

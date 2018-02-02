@@ -1,0 +1,63 @@
+    <title>#if($title)$title#else{后台管理}#end</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+	<link rel="stylesheet" href="/resources/ace/assets/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/resources/ace/assets/css/font-awesome.min.css"/>
+	<!--[if IE 7]>
+	  <link rel="stylesheet" href="$homeModule.forPath("/resources/ace/assets/css/font-awesome-ie7.min.css").build()" />
+	<![endif]-->
+	<!-- page specific plugin styles -->
+	<link rel="stylesheet" href="/resources/ace/assets/css/jquery-ui-1.10.3.full.min.css" />
+	<link rel="stylesheet" href="/resources/ace/assets/css/jquery.gritter.css" />
+	<link rel="stylesheet" href="/resources/ace/assets/css/datepicker.css" />
+	<link rel="stylesheet" href=/resources/ace/assets/css/ui.jqgrid.css" />
+	<!-- ace styles -->
+	<link rel="stylesheet" href=/resources/ace/assets/css/ace.css" />
+	<link rel="stylesheet" href="/resources/ace/assets/css/ace-rtl.min.css" />
+	<link rel="stylesheet" href=/resources/ace/assets/css/ace-skins.min.css" />
+	<!--[if lte IE 8]>
+	  <link rel="stylesheet" href="$homeModule.forPath("/resources/ace/assets/css/ace-ie.min.css").build()" />
+	<![endif]-->
+	<link rel="stylesheet" href="/resources/ace/assets/dropzone430/min/dropzone.min.css" />
+	
+	<link rel="stylesheet" href="/resources/ace/assets/jQueryPlugins.css" />
+	<link rel="stylesheet" href="/resources/ace/assets/style.css" />
+	<!-- ace settings handler -->
+	<script src="/resources/ace/assets/js/ace-extra.min.js"></script>
+	<!--[if lt IE 9]>
+	<script src="$homeModule.forPath("/resources/ace/assets/js/html5shiv.js").build()"></script>
+	<script src="$homeModule.forPath("/resources/ace/assets/js/respond.min.js").build()"></script>
+	<![endif]-->
+	<script src="/resources/ace/assets/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+    	if("ontouchend" in document) {
+    		document.write('<script src="/resources/ace/assets/js/jquery.mobile.custom.min.js">'+'<'+'/script>');
+    	}
+    </script>
+	<script type="text/javascript" src="/resources/ace/assets/js/jquery.gritter.min.js"></script>
+	<!--WdatePicker lib包 -->
+	<script type="text/javascript" src="/resources/ace/assets/js/My97DatePicker/WdatePicker.js"></script>
+    <script src="/resources/ace/assets/js/bootstrap.min.js"></script>
+    <script src="/resources/ace/assets/js/typeahead-bs2.min.js"></script>
+	<!-- page specific plugin scripts -->
+	<script src="/resources/ace/assets/js/jquery-ui-1.10.3.full.min.js"></script>
+	<script src="/resources/ace/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <!-- page specific plugin scripts -->
+    <script src="/resources/ace/assets/js/date-time/bootstrap-datepicker.min.js"></script>
+    <script src="/resources/ace/assets/js/jqGrid/jquery.jqGrid.min.js"></script>
+    <script src="/resources/ace/assets/js/jqGrid/i18n/grid.locale-cn.js"></script>
+    <!-- ace scripts -->
+    <script src="/resources/ace/assets/js/ace-elements.min.js"></script>
+    <script src="/resources/ace/assets/js/ace.min.js"></script>
+	<script src="/resources/ace/assets/dropzone430/min/dropzone.min.js"></script>
+	<script src="/resources/ace/assets/jstree/jquery.jstree.1.0_rc3.js"></script>
+	<script src="/resources/ace/assets/js/jquery.knob.min.js"></script>
+	
+	<script src="/resources/ace/assets/style.js"></script>
+	
+	<script src="/resources/ace/assets/jQueryPlugins.js"></script>
+	
+	<script type="text/javascript" src="/rest/msgs/getLocaljs.json" ></script>
+	

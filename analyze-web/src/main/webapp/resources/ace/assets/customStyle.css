@@ -1,0 +1,394 @@
+.box {width: 1150px;margin: 0px auto;}
+.box * {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+.box button,.box input[type="button"]{
+	background:url("images/panel.gif") repeat scroll 0 0 transparent;
+	cursor:pointer;
+	-moz-border-radius: 5px; 
+	-khtml-border-radius: 5px; 
+	-webkit-border-radius: 5px; 
+	border-radius: 5px;
+}
+.box textarea{
+	margin:2px;
+	padding:4px;
+}
+.box select{
+	min-width:125px;
+}
+.clear{
+	clear:both;
+}
+table {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-collapse: collapse;
+    margin-top: 5px;
+    width: 100%;
+}
+table td {
+  height: 23px;
+  padding: 0 4px;
+}
+table td, table th {
+}
+.ui-widget table textarea{width:300px;}
+.dialog-form {display:none;}
+.jd-text-highlight{ 
+	background:url("skin/images/ui-bg_glass_95_fef1ec_1x400.png") repeat-x scroll 50% 50% #FEF1EC;
+	border:1px solid #CD0A0A;
+	color:#CD0A0A
+}
+.warning{
+	border:1px solid #FF0000;
+	outline:1px solid #FFC1C1;
+}
+.warningText{
+	color:#FF0000;
+	margin-left:5px;
+}
+input:focus,textarea:focus,select:focus{
+   box-shadow: 0px 0px 10px #059EE6!important;
+}
+.loading{
+	background:url("images/loading.gif") no-repeat scroll 90% 50% #FEF1EC;
+	text-align:left;
+	padding-top:5px;
+	padding-left:5px;
+	padding-right:15px;
+	margin:0 auto;
+}
+.result {
+	text-align:center;
+}
+.result .success{
+	background:url("images/success_2.png") no-repeat scroll 50% 50% #F0F0F0;
+	height:200px;
+}
+.result .error{
+	background:url("images/error_2.jpg") no-repeat scroll 50% 50% #F0F0F0;
+	height:200px;
+}
+.result .returntext{
+	padding-top:180px;
+}
+.center{
+	text-align:center;
+	margin:5px auto;
+}
+.right{
+	text-align:right;
+}
+.boldText{
+	color:black;
+	font-weight:bold;
+}
+.redText{
+	color:red;
+	background-color:#FCF2AD;
+}
+.greenText{
+	color:green;
+	background-color:#FCF2AD;
+}
+.waiting{
+	background:url("images/waiting.jpg") no-repeat scroll 50% 50% #F0F0F0;
+	height:200px;
+}
+
+.jd_showDialog{
+	display:none;
+	border:1px solid #000000;
+	width:300px;
+}
+.jd_showDialog ul.pagedownload{
+	list-style-type:none;
+	text-align:right;
+}
+.jd_showDialog ul.pagedownload li.activit{
+	background-color:#0756A0;
+	color:#FFFFFF;
+	cursor:pointer;
+}
+.jd_showDialog ul.pagedownload li.selected{
+	background-color:#808080;
+	cursor:pointer;
+}
+.jd_showDialog_table{
+	border:1px solid #000000;
+	width:280px;
+	margin:5px 5px;
+}
+.postForm th{
+	background-color:#F1F9FC;
+	color: #2E6E9E;
+}
+.postForm .linetr{
+	background-color:#FFFFFF;
+	font-size:12px;
+	color:#2E6E9E;
+}
+.showOverFlow{
+	overflow:auto;
+}
+.jd_hide{
+	display:none;
+}
+.jstree-default a ins.jd-tree-asy-event{ 
+	background:url("images/asy_event_small.png") center center no-repeat;
+}
+.jstree-default a ins.jd-tree-asy-worker{ 
+	background:url("images/icon-worker.png") no-repeat scroll 0px 50%;
+}
+.jstree-default a ins.jd-tree-asy-worker-closed{ 
+	background:url("images/icon-worker.png") no-repeat scroll -20px 50%;
+}
+.jstree-default a ins.jd-tree-syn-event{ 
+	background:url("images/syn_event_small.png") no-repeat scroll 0px 0px;
+}
+.jstree-default a ins.jd-tree-cycle-event{ 
+	background:url("images/icon-cycle.png") no-repeat scroll 0px 50%;
+}
+.jstree-default a ins.jd-tree-cycle-event-closed{
+	background:url("images/icon-cycle.png") no-repeat scroll -20px 50%;
+}
+.jstree-default a ins.folder-tar{ 
+	background:url("images/folder-tar-20-20.png") center center no-repeat;
+}
+.jstree-default a ins.file{ 
+	background:url("images/file.png") center center no-repeat;
+}
+.jstree-default a ins.file-running{ 
+	background:url("images/file-running.png") center center no-repeat;
+}
+.jstree-default a ins.file-end{ 
+	background:url("images/file-end.png") center center no-repeat;
+}
+.alignleft{
+	text-align:left;
+	padding-left:10px;
+}
+.title {
+	background:url("images/title_bg.gif") repeat-x scroll 0 0 transparent;
+	border: 1px solid #B3D8EA;
+    color: #05539B;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 28px;
+    padding-left: 25px;
+    text-align: left;
+}
+.title .dictype{
+	background:url(images/dictype.jpg) no-repeat 9px 50%;
+	padding-left:25px
+}
+.jdTitle {
+	background:url("images/title_bg.gif") repeat-x scroll 0 0 transparent;
+	font-size:14px;
+	font-weight:bold;
+	line-height:28px;
+	text-align:center;
+}
+.double_box {
+	margin-top:5px;
+	height:100%;
+}
+.double_box .leftbox{
+	border:1px solid #B3D8EA;
+	width:40%;
+	height:99%;
+	float:left;
+}
+.double_box .rightbox{
+	border:1px solid #B3D8EA;
+	width:59%;
+	height:99%;
+	float:right;
+}
+.iframeNoBoder{
+	border:none;
+	width:99%;
+	height:99%;
+}
+.activity{
+	background:none repeat scroll 0 0 #DEEBFF;
+	color:#000000;
+}
+.light{
+	background-color:#FCF2AD;
+}
+.draging{
+	background-color:#ccc;
+	cursor:move;
+}
+.checked{
+	background:none repeat scroll 0 0 #C0C0C0;
+}
+.box .rowButtons * {
+	width:90%;
+	margin:2px auto;
+	display:block;
+}
+.box .rowButtons input[type="button"],.rowButtons input[type="submit"]{
+	background:url("images/panel.gif") repeat scroll 0 0 transparent;
+	cursor:pointer;
+	height:25px;
+	padding:0 5px;
+}
+.box .rowButtons input.activity{
+	background:none repeat scroll 0 0 #2774C1;
+	color:#FFFFFF;
+}
+.box .colButtons * {
+	margin:2px 5px;
+}
+.box .colButtons input[type="button"],.colButtons input[type="submit"]{
+	background:url("images/panel.gif") repeat scroll 0 0 #F2F2F2;
+	cursor:pointer;
+	height:30px;
+	padding:0 5px;
+}
+.box .colButtons input.activity{
+	background:none repeat scroll 0 0 #2774C1;
+	color:#FFFFFF;
+}
+.box .selectBoxs input{
+	margin-left:5px;
+	cursor:pointer;
+}
+.box .selectBoxs label{
+	cursor:pointer;
+}
+.table_two{
+	border: 1px solid #A3C0E8;
+}
+.table_two th{
+	background:url("images/panel.gif") repeat scroll 0 0 transparent;
+	border: 1px solid #A3C0E8;
+}
+.table_two td{
+	text-align:left;
+	border: 1px solid #A3C0E8;
+}
+.table_q{
+	border-style:none;
+	margin:10px auto 0px;
+	width:95%;
+}
+.table_q tr{
+	margin:2px;
+	border: 1px solid #A3C0E8;
+}
+.table_q th{
+	background:url("images/panel.gif") repeat scroll 0 0 #DFE8F6;
+	border: 1px solid #A3C0E8;
+	text-align:left;
+	color:#0756A3;
+	padding:2px 5px;
+	font-weight:bold;
+}
+.table_q td{
+	border: 1px solid #A3C0E8;
+	text-align:left;
+	padding:2px 5px;
+}
+.table_data_title_div{
+	margin-top:5px;
+}
+.table_data_title{
+	margin-top:5px;
+}
+.table_data_title th{
+	background:url("images/panel.gif") repeat scroll 0 0 transparent;
+	border: 1px solid #A3C0E8;
+	color:#0756A3;
+}
+.table_data_div{
+}
+.table_data{
+	width:100%;
+	margin-top:0px;
+	table-layout:fixed;
+	text-align:center;
+}
+.table_Nofixed{
+	table-layout:auto;
+}
+.table_data tr{
+	height:23px;
+	text-align:center;
+	word-wrap: break-word;
+	word-break:break-all;
+}
+.table_data th{
+	background:url("images/title_bg_2.gif") repeat scroll 0 0 transparent;
+	border: 1px solid #A3C0E8;
+	color:#0756A3;
+	text-align:center;
+	font-weight:bold;
+}
+.table_data td{
+	border-bottom:1px solid #CFD3D7;
+	text-align:center;
+}
+.table_data .nowrap{
+	white-space:nowrap;
+}
+.pages{
+	margin:10px 0px;
+	text-align:right;
+}
+.pages a{
+	border:1px solid #AAAADD;
+	margin:2px;
+	padding:2px;
+	text-decoration:none;
+}
+.cursorPoint{
+	cursor:pointer;
+}
+.toggleIcon{
+	 /* background:url(images/icon.png) no-repeat 10px 15px; */
+	padding-left:20px;
+	height:16px;
+  	width:16px;
+  	overflow:hidden;
+}
+.toggleIconUp{
+  	background-position: -83px -57px;
+}
+.toggleIconDown{
+  	background-position: -60px -57px;
+}
+.nav-fixed-title{
+	background:url("images/title_bg_2.gif") repeat scroll 0 0 transparent;
+	color:#0756A3;
+	font-weight:bold;
+	height:100%;
+}
+.nav-fixed-title div{
+	text-align:center;
+	float:left;
+	margin:0px auto;
+	border: 1px solid #A3C0E8;
+	height:100%;
+}
+/* jquery plugin selectFilter start */
+.selectListTitle input{
+	width:100%;
+}
+.selectListContent{
+	overflow:auto;
+}
+.jd_showDialog .selectListContent ul.selectList{
+	list-style-type:none;
+	text-align:left;
+}
+.selectListContent ul.selectList li.activit{
+	background-color:#0756A0;
+	color:#FFFFFF;
+	cursor:pointer;
+}
+/* jquery plugin selectFilter end */

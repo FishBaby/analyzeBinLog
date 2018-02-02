@@ -1,0 +1,10 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		#parse("common/title.vm")
+	</head>
+	<body id="mainframe" class="inner">
+		$screen_content
+		#parse("common/bottom.vm") 
+	</body>
+</html>

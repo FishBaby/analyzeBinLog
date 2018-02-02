@@ -7,7 +7,7 @@
 	    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
 	    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
-
+	
 
 	<!-- template view -->
 	<bean id="velocityConfig"
@@ -63,7 +63,6 @@
 		</property>
 	</bean>
 
-	<mvc:default-servlet-handler />
 
 	<bean id="sqlTypes" class="java.util.HashMap">
 		<constructor-arg>
